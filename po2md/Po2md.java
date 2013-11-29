@@ -20,19 +20,22 @@ public class Po2md {
 		BufferedReader in = new BufferedReader( new InputStreamReader(System.in));
 		PrintStream out = System.out;
 		String line;
-		boolean msgstr = false;
+		boolean translated = false;
+		boolean outputOrig = args.length > 0;
 		Pattern firstquote = Pattern.compile(regexp.getString("firstquote"));
 		Pattern lastquote = Pattern.compile(regexp.getString("lastquote"));
-		Pattern masking =  Pattern.compile(regexp.getString("masking"));
+		Pattern masking = Pattern.compile(regexp.getString("masking"));
+		Pattern blank = Pattern.compile(regexp.getString("blank"));
 		while ((line = in.readLine()) != null) {
 			if (line.startsWith("msgid")) {
-				msgstr = false;
+				translated = false;
+				line = line.substring(5);
 			}
 			if (line.startsWith("msgstr")) {
-				msgstr = true;
+				translated = true;
 				line = line.substring(6);
 			}
-			if (!msgstr) {
+			if (blank.matcher(line).matches() || !(translated ^ outputOrig)) {
 				continue;
 			}
 			line = firstquote.matcher(line).replaceAll("");
