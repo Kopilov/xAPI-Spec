@@ -70,14 +70,12 @@
     *	7.8.	[Cross Origin Requests](#cors)  
     *	7.9.	[Validation](#validation)  
     *	7.10.	[HTTP HEAD](#httphead)  
-*	[Appendix A: Bookmarklet](#AppendixA)  
-*	[Appendix B: Creating an "IE Mode" Request](#AppendixB)  
-*	[Appendix C: Example Statements](#AppendixC)  
-*	[Appendix D: Example statement objects of different types](#AppendixD)  
-*	[Appendix E: Example definitions for Activities of type "cmi.interaction"](#AppendixE)  
-*	[Appendix F: Converting Statements to 1.0.0](#AppendixF)   
-*	[Appendix G: Example Signed Statement](#AppendixG)
-*	[Appendix H: Table of All Endpoints](#AppendixH)
+*	[Appendix A: Example Statements](#AppendixA)  
+*	[Appendix B: Example statement objects of different types](#AppendixB)  
+*	[Appendix C: Example definitions for Activities of type "cmi.interaction"](#AppendixC)  
+*	[Appendix D: Converting Statements to 1.0.0](#AppendixD)   
+*	[Appendix E: Example Signed Statement](#AppendixE)
+*	[Appendix F: Table of All Endpoints](#AppendixF)
 
 <a name="revhistory"/>  
 
@@ -864,20 +862,23 @@ _Язык_
 свойства информационного объекта в этом случае.
 
 <table>
-	<tr><th>Свойство</th><th>Тип</th><th>Описание</th></tr>
+	<tr><th>Свойство</th><th>Тип</th><th>Описание</th><th>Обязательность</th></tr>
 	<tr>
 		<td>objectType</td>
 		<td>Строка</td>
-		<td>"Activity", если указано. Можно не указывать</td>
+		<td>"Activity", если указано</td>
+		<td>Опционально</td>
 	</tr>
 	<tr>
 		<td><a href="#acturi">id</a></td><td>IRI</td>
-		<td>Идентификатор данной конкретной задачи. Обязательно.</td>
+		<td>Идентификатор данной конкретной задачи</td>
+		<td>Обязательно</td>
 	</tr>
 	<tr>
 		<td><a href="#actdef">definition</a></td>
 		<td>Объект</td>
 		<td>Определение – дополнительные метаданные, <a href="#actdef">см. ниже</a></td>
+		<td>Опционально</td>
 	</tr>
 </table>
 
@@ -886,7 +887,8 @@ _Язык_
 с одинаковым id, как разные, даже если это могло предполагаться. А именно, 
 в случае конфликта с другой системой поведение не определено. 
 
-<a name="actdef"/>
+
+###### <a name="actdef" />Определение Задачи
 В таблице ниже перечислены все свойства определения Задачи:
 
 <table>
@@ -907,16 +909,16 @@ _Язык_
 		<a name="acttype"/>
 		<td>type</td>
 		<td>IRI</td>
-		<td>Рекомендуется</td>
 		<td>тип Задачи.</td>
+		<td>Рекомендуется</td>
 	</tr>
 	<tr>
 		<td>moreInfo</td>
 		<td>IRL</td>
-		<td>Опционально</td>
 		<td>ДОЛЖЕН приводиться к документу, который содержит информацию о Задаче,
 		в том числе МОЖЕТ включать путь к её решению.
 		</td>
+		<td>Опционально</td>
 	</tr>
 	<tr>
 		<td colspan="4">Свойства взаимодействия, см.: <a href="#interactionacts">Интерактивные задачи</a></td>
@@ -924,8 +926,8 @@ _Язык_
 	<tr>
 		<td>extensions</td>
 		<td>Объект</td>
-		<td>Опционально</td>
 		<td>Другие свойстви по требованию (см.: <a href="#miscext">Расширения</a>)</td>
+		<td>Опционально</td>
 	</tr>
 </table>
 
@@ -933,7 +935,7 @@ __Примечание:__ фрагменты IRI (так же называемы
 Провайдерам ресурсов рекомендуется по мере возможностей использовать утвердившиеся, широко распространённые типы Задач.
 
 
-###### Требования к id Задачи
+###### <a name="acturi" />Требования к id Задачи
 
 * Id Задачи ОБЯЗАН быть уникальным.
 * Id ОБЯЗАН всегда указывать на одну и ту же задачу.
@@ -996,12 +998,13 @@ Activity Definition</a> в формате JSON, используемый в Ут
 Свойства интерактивной задачи перечислены в таблице ниже.
 
 <table>
-	<tr><th>Свойство</th><th>Тип</th><th>Описание</th></tr>
+	<tr><th>Свойство</th><th>Тип</th><th>Описание</th><th>Обязательность</th></tr>
 	<tr>
 		<td>interactionType</td>
 		<td>Строка</td>
 		<td>Тип взаимодействия – аналогично "cmi.interactions.n.type", определено в
 			SCORM 2004 Run-Time Environment, 4-е издание.</td>
+		<td>Опционально</td>
 	</tr>
 	<tr>
 		<td>correctResponsesPattern</td>
@@ -1010,11 +1013,13 @@ Activity Definition</a> в формате JSON, используемый в Ут
 			"cmi.interactions.n.correct_responses.n.pattern" определено в
 			SCORM 2004 Run-Time Environment, 4-е издание, где последнее
 			<em>n</em> – индекс массива.</td>
+		<td>Опционально</td>
 	</tr>
 	<tr>
 		<td>choices | scale | source | target | steps</td>
 		<td>Массив интерактивных компонентов</td>
 		<td>В зависимости от типа взаимодействия (<a href="#interactionType">см. ниже</a>).</td>
+		<td>Опционально</td>
 	</tr>
 </table>  
 
@@ -1033,17 +1038,19 @@ Activity Definition</a> в формате JSON, используемый в Ут
 Компоненты взаимодействия определены следующим образом:  
 
 <table>
-	<tr><th>Свойство</th><th>Тип</th><th>Описание</th></tr>
+	<tr><th>Свойство</th><th>Тип</th><th>Описание</th><th>Обязательность</th></tr>
 	<tr>
 		<td>id</td>
 		<td>Строка</td>
 		<td>Значение, аналогичное используемому в "cmi.interactions.n.id", 
             определено в SCORM 2004 Run-Time Environment, 4-е издание</td> 
+		<td>Обязательно</td>
 	<tr>
 		<td>description</td>
 		<td><a href="#misclangmap">Локализованное поле</a></td>
 		<td>Описание компонента взаимодейтвия
 			(например, текст к предлагаемому выбору в вопросе с вариантами ответа)</td>
+		<td>Опционально</td>
 	</tr>
 </table>
 
@@ -1109,10 +1116,10 @@ Activity Definition</a> в формате JSON, используемый в Ут
 Все свойства Ссылки на Утверждение перечислены в таблице ниже:
 
 <table border ="1">
-	<tr><th>Свойство</th><th>Тип</th><th>Описание</th></tr>
-	<tr><td>objectType</td><td>Строка</td><td>В данном случае, ОБЯЗАНО иметь значение "StatementRef".</td></tr>
+	<tr><th>Свойство</th><th>Тип</th><th>Описание</th><th>Обязательность</th></tr>
+	<tr><td>objectType</td><td>Строка</td><td>В данном случае, ОБЯЗАНО иметь значение "StatementRef".</td><td>Обязательно</td></tr>
 	<tr><td>id</td><td>UUID</td><td>UUID Утверждения. 
-	</td></tr>
+	</td><td>Обязательно</td></tr>
 </table>
 
 ###### Пример
