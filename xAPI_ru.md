@@ -912,16 +912,16 @@ _Язык_
 		<a name="acttype"/>
 		<td>type</td>
 		<td>IRI</td>
-		<td>Рекомендуется</td>
 		<td>тип Задачи.</td>
+		<td>Рекомендуется</td>
 	</tr>
 	<tr>
 		<td>moreInfo</td>
 		<td>IRL</td>
-		<td>Опционально</td>
 		<td>ДОЛЖЕН приводиться к документу, который содержит информацию о Задаче,
 		в том числе МОЖЕТ включать путь к её решению.
 		</td>
+		<td>Опционально</td>
 	</tr>
 	<tr>
 		<td colspan="4">Свойства взаимодействия, см.: <a href="#interactionacts">Интерактивные задачи</a></td>
@@ -929,8 +929,8 @@ _Язык_
 	<tr>
 		<td>extensions</td>
 		<td>Объект</td>
+		<td>Другие свойства по требованию (см.: <a href="#miscext">Расширения</a>)</td>
 		<td>Опционально</td>
-		<td>Другие свойстви по требованию (см.: <a href="#miscext">Расширения</a>)</td>
 	</tr>
 </table>
 
@@ -1011,7 +1011,7 @@ Activity Definition</a> в формате JSON, используемый в Ут
 	<tr>
 		<td>correctResponsesPattern</td>
 		<td>Массив строк</td>
-		<td>Соответствует 
+		<td>Шаблон правильных ответов – соответствует 
 			"cmi.interactions.n.correct_responses.n.pattern" определено в
 			SCORM 2004 Run-Time Environment, 4-е издание, где последнее
 			<em>n</em> – индекс массива.</td>
