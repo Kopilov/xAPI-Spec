@@ -40,7 +40,7 @@
         *	4.1.10.	[Версия](#version)  
         *	4.1.11.	[Вложения](#attachments)  
         *	4.1.12.	[Ограничения целостности данных](#dataconstraints)  
-    *	4.2.	[Retrieval of Statements](#retstmts)  
+    *	4.2.	[Поиск Утверждений](#retstmts)  
 	*	4.3.	[Voided](#voided)  
 	*	4.4.	[Signed Statements](#signature)  
 *	5.0.	[Miscellaneous Types](#misctypes)  
@@ -859,7 +859,7 @@ _Язык_
 
 <a name="activity"/>
 
-##### 4.1.4.1 Когда Объектом является Здача
+##### 4.1.4.1 Когда Объектом является Задача
 
 ###### Детали
 
@@ -1886,7 +1886,7 @@ here is a simple attachment
 
 ###### Описание
 Выборка Утверждений может быть получена с помощью запроса в подсервис "statements", 
-детали смотрите в разделе [7.2 "Statement API"](#stmtapi). 
+подробности смотрите в разделе [7.2 "Statement API"](#stmtapi). 
 
 ###### Детали
 Следующая таблица содержит структуру данных, отображающих результат запроса к Statement API.
