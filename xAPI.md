@@ -912,8 +912,8 @@ The table below lists the properties of the Activity Definition Object:
 	<tr>
 		<td>moreInfo</td>
 		<td>IRL</td>
-		<td>SHOULD resolve to a document human-readable information about the Activity,
-		which MAY include a way to 'launch' the Activity.
+		<td>SHOULD resolve to a document containing human-readable information about
+		the Activity, which MAY include a way to 'launch' the Activity.
 		</td>
 		<td>Optional</td>
 	</tr>
@@ -1110,7 +1110,8 @@ A Statement Reference is a pointer to another pre-existing Statement.
 ###### Requirements
 
 * A Statement Reference MUST specify an "objectType" property with the value "StatementRef".
-* A Statement Reference MUST set the "id" property to the UUID of a Statement.
+* A Statement Reference MUST set the "id" property to the UUID of a Statement. There is no requirement for 
+the LRS to validate that the UUID matches a Statement that exists.
 
 The table below lists all properties of a Statement Reference Object:
 
@@ -2621,7 +2622,7 @@ Returns: ```200 OK```, Statement id(s) (UUID).
 
 * An LRS MUST NOT make any modifications to its state based on a receiving a Statement
 with a statementID that it already has a Statement for. Whether it responds with
-```409 Conflict``` or ```204 No Content```, it MUST NOT modify the Statement or any other
+```409 Conflict``` or ```200 OK```, it MUST NOT modify the Statement or any other
 Object.
 
 * If the LRS receives a Statement with an id it already has a Statement for, it SHOULD
@@ -2919,7 +2920,7 @@ information in this section applies to all three APIs.
 	<tr>
 		<td>Agent Profile API</td>
 		<td>POST</td>
-		<td>agent/profile</td>
+		<td>agents/profile</td>
 		<td>http://example.com/xAPI/agents/profile</td>
 	</tr>
 </table>
@@ -3122,7 +3123,7 @@ The Activity Profile API is much like the State API, allowing for arbitrary key
 
 ###### Details
 
-The semantics of the call are driven by the stateId parameter. If it is included, 
+The semantics of the call are driven by the profileId parameter. If it is included, 
 the GET method will act upon a single defined document identified by "profileId". 
 Otherwise, GET will return the available ids.
 
@@ -3205,7 +3206,7 @@ document pairs to be saved which are related to an Agent.
 
 ###### Details
 
-The semantics of the call are driven by the stateId parameter. If it is included, 
+The semantics of the call are driven by the profileId parameter. If it is included, 
 the GET method will act upon a single defined document identified by "profileId". 
 Otherwise, GET will return the available ids.  
 
@@ -3590,7 +3591,7 @@ a statement returned by an LRS including the authority and stored properties set
             },
             {
                 "name": "Ena Hills",
-                "mbox_sha1sum": "esydnag7fhxkquopagrr4aiputa=",
+                "mbox_sha1sum": "ebd31e95054c018b10727ccffd2ef2ec3a016ee9",
                 "objectType": "Agent"
             }
         ],
