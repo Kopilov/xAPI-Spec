@@ -528,7 +528,7 @@ An example of the simplest possible Statement using all properties that MUST or 
 	}
 }
 ```  
-See [Appendix C: Example Statements](#AppendixC) for more examples. 
+See [Appendix A: Example Statements](#AppendixA) for more examples. 
 
 <a name="stmtid"/> 
 
@@ -760,16 +760,14 @@ Using the display property for aggregation or categorization of Statements is an
 * The IRI contained in the id SHOULD be human-readable and imply the Verb meaning.
 
 ###### Example
-
+This example shows a Verb with the recommended fields set.
 ```
 {
-	"verb" : { 
-		"id":"http://www.adlnet.gov/XAPIprofile/ran(travelled_a_distance)", 
-		"display":{
-			"en-US":"ran",
-			"es" : "corrió" 
-		} 
-	}
+    "id":"http://www.adlnet.gov/XAPIprofile/ran(travelled_a_distance)", 
+    "display":{
+        "en-US":"ran",
+        "es" : "corrió" 
+    } 
 }
 ``` 
 
@@ -1075,7 +1073,7 @@ an interaction Activity with the given interactionType.
 
 ###### Example
 
-See [Appendix E](#AppendixE) for examples of Activity Definitions for each of the cmi.interaction types.
+See [Appendix C](#AppendixC) for examples of Activity Definitions for each of the cmi.interaction types.
 
 <a name="agentasobj"/>
 
@@ -1481,12 +1479,12 @@ useful when the Object of the Statement is an Agent, not an Activity.
 
 ```
 {
-	"parent" : [{
-	"id" : "http://example.adlnet.gov/xapi/example/test 1"
-	}],
-	"grouping" : [{
-	"id" : "http://example.adlnet.gov/xapi/example/Algebra1"
-	}]
+    "parent" : [
+        {"id" : "http://example.adlnet.gov/xapi/example/test1"}
+    ],
+    "grouping" : [
+        {"id" : "http://example.adlnet.gov/xapi/example/Algebra1"}
+    ]
 }
 ```
 
@@ -2036,7 +2034,7 @@ the scope of this specification.
 
 
 ##### Example
-See <a href="#AppendixG">Appendix G: Example Signed Statement</a> for an example.
+See <a href="#AppendixE">Appendix E: Example Signed Statement</a> for an example.
 
 
 
@@ -2499,8 +2497,9 @@ syntax after this represents the particular endpoint used.
 ###### Requirements
 
 * The LRS MUST reject with ```HTTP 400 Bad Request``` status any request to any 
-of these APIs that use any parameters which the LRS does not recognize ( __Note:__ 
-LRSs may recognize and act on parameters not in this specification).
+of these APIs that use any parameters which the LRS does not recognize in their 
+intended context in this specification ( __Note:__ LRSs may recognize and act on 
+parameters not in this specification).
 
 * The LRS MUST reject with ```HTTP 400 Bad Request``` status any request to any 
 of these APIs that use any parameters matching parameters described in this 
@@ -3440,9 +3439,6 @@ with this syntax. See [4.1.11. Attachments](#attachments)
 
 * The LRS MUST support the syntax above.
 
-See [Appendix B](#AppendixB) for an example function written in JavaScript 
-which transforms a normal request into one using this alternate syntax.  
-
 It should also be noted that versions of Internet Explorer lower than 10 do not 
 support Cross Domain Requests between HTTP and HTTPS. This means that for IE9 and lower, 
 if the LRS is on an HTTPS domain, the Client sending the Statement must also be on HTTPS. 
@@ -3748,17 +3744,17 @@ This example shows an identified group with members.
     },
     "objectType": "Group",
     "member": [
-            {
-                "name": "Andrew Downes",
-                "mbox": "mailto:andrew@example.com",
-                "objectType": "Agent"
-            },
-            {
-                "name": "Aaron Silvers",
-                "openid": "aaron.openid.example.org",
-                "objectType": "Agent"
-            }
-        ],
+        {
+            "name": "Andrew Downes",
+            "mbox": "mailto:andrew@example.com",
+            "objectType": "Agent"
+        },
+        {
+            "name": "Aaron Silvers",
+            "openid": "http://aaron.openid.example.org",
+            "objectType": "Agent"
+        }
+    ]
 }
 ```
 
@@ -3768,22 +3764,22 @@ This example shows a Sub-Statement object whose object is a Statement Reference.
 
 ```
 {
-        "objectType": "SubStatement",
-        "actor" : {
-            "objectType": "Agent", 
-            "mbox":"mailto:agent@example.com" 
-        },
-        "verb" : { 
-            "id":"http://example.com/confirmed", 
-            "display":{
-                "en":"confirmed"
-            } 
-        },
-        "object": {
-            "objectType":"StatementRef",
-    		"id" :"9e13cefd-53d3-4eac-b5ed-2cf6693903bb"
-        }
+    "objectType": "SubStatement",
+    "actor" : {
+        "objectType": "Agent", 
+        "mbox":"mailto:agent@example.com" 
+    },
+    "verb" : { 
+        "id":"http://example.com/confirmed", 
+        "display":{
+            "en":"confirmed"
+        } 
+    },
+    "object": {
+        "objectType":"StatementRef",
+		"id" :"9e13cefd-53d3-4eac-b5ed-2cf6693903bb"
     }
+}
 ```
 
 <a name="AppendixC"/>  
